@@ -1114,12 +1114,11 @@ button { font-family: inherit; }
 
 /* ── 900px — iPad Air / tablets landscape ── */
 @media (max-width: 900px) {
-  .hero__body { padding-top: 0; justify-content: center; }
+  .hero__body { padding-top: 0; justify-content: flex-end; padding-bottom: clamp(2.5rem, 7vh, 5rem); }
   .hero__title-word { font-size: clamp(2.8rem, 7.5vw, 5rem); }
   .hero__bg { background-image: var(--img-ipad); background-size: cover; background-position: 50% top; }
   .hero__veil { background:
-    linear-gradient(90deg, rgba(16, 38, 26, 0.82) 0%, rgba(16, 38, 26, 0.55) 38%, rgba(16, 38, 26, 0.15) 65%, rgba(16, 38, 26, 0) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(16, 38, 26, 0.75) 100%); }
+    linear-gradient(180deg, rgba(16, 38, 26, 0.55) 0%, rgba(16, 38, 26, 0.12) 24%, rgba(16, 38, 26, 0.42) 56%, rgba(16, 38, 26, 0.96) 100%); }
 
   .testis { grid-template-columns: repeat(2, 1fr); }
   .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -1161,11 +1160,10 @@ button { font-family: inherit; }
 
 @media (max-width: 680px) {
   :root { --topbar: 78px; }
-  .hero__body { padding-top: 0; justify-content: center; }
+  .hero__body { padding-top: 0; justify-content: flex-end; padding-bottom: clamp(2rem, 6vh, 4rem); }
   .hero__bg { background-image: var(--img-mobile); background-size: cover; background-position: 50% top; background-attachment: scroll; }
   .hero__veil { background:
-    linear-gradient(90deg, rgba(16, 38, 26, 0.35) 0%, rgba(16, 38, 26, 0.2) 38%, rgba(16, 38, 26, 0.05) 70%, rgba(16, 38, 26, 0) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(16, 38, 26, 0.75) 100%); }
+    linear-gradient(180deg, rgba(16, 38, 26, 0.5) 0%, rgba(16, 38, 26, 0.08) 20%, rgba(16, 38, 26, 0.45) 54%, rgba(16, 38, 26, 0.97) 100%); }
   #contato { padding-top: 1.5rem !important; scroll-margin-top: var(--topbar); }
 
   .contact { display: flex; flex-direction: column; }
@@ -1431,4 +1429,35 @@ button { font-family: inherit; }
   margin-bottom: 0;
   color: var(--gold, #c9a86a);
   font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════
+   REFINO DE RESPONSIVIDADE (mobile / tablet)
+══════════════════════════════════════════════════════ */
+
+/* História: parágrafos sempre alinhados à esquerda (leitura) */
+.historia-text { text-align: left; }
+
+@media (max-width: 680px) {
+  /* Mantém a história legível (esquerda), mesmo com o cabeçalho centralizado */
+  .historia-text,
+  .historia-text p { text-align: left; }
+
+  /* Áreas de toque confortáveis (mín. 44px) */
+  .store-card__addr a,
+  .store-card__cta,
+  .footer__link,
+  .footer__credit {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .store-card__addr a { gap: 0.1rem; }
+
+  /* Respiro entre os dois telefones no card de contato */
+  .store-card__addr span { line-height: 1.9; }
+}
+
+@media (max-width: 680px) {
+  .footer__social { width: 44px; height: 44px; }
 }
