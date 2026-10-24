@@ -805,7 +805,7 @@ button { font-family: inherit; }
   position: relative;
   border-radius: var(--r);
   overflow: hidden;
-  min-height: 340px;
+  min-height: 440px;
   border: 1px solid var(--gold-bd);
 }
 .store-card__img {
@@ -866,7 +866,7 @@ button { font-family: inherit; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 4;
-  padding: 1.75rem;
+  padding: 2.2rem 2.1rem;
 }
 .store-card__eyebrow {
   display: flex;
@@ -1154,7 +1154,7 @@ button { font-family: inherit; }
   .nav__links { gap: 1rem; }
   .nav__links a { font-size: 0.7rem; }
 
-  .store-card { min-height: 320px; }
+  .store-card { min-height: 420px; }
   .s-block { padding: clamp(3rem, 6vw, 5rem) 0; }
 }
 
