@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const phoneNumber = '5514991163773'
 const whatsappHref = `https://wa.me/${phoneNumber}`
+const comprarHref = 'https://wa.me/5514991796003'
 const mapsHref = 'https://www.google.com/maps/search/?api=1&query=Av.+Antonio+Prado+Lyra+357+Jardim+Diamante+Jau+SP'
 const googleReviewsHref =
   'https://www.google.com/search?q=djiri+suplementos#lrd=0x94b8a7ff4cf29b0d:0xdabc3ea7d9dbca92,1,,,'
@@ -53,28 +54,12 @@ const testimonialItems = [
   { name: 'Juliano Medeiros', text: 'Loja top, melhores produtos, preço sensacional, tem de tudo.', stars: 5 },
 ]
 
-const stats = [
-  { value: 20, suffix: 'k+', label: 'Clientes Satisfeitos' },
-  { value: 100, suffix: '+', label: 'Marcas Exclusivas' },
-  { value: 200, suffix: '+', label: 'Avaliações no Google' },
-]
-
-const benefits = [
-  {
-    number: '01',
-    title: 'Curadoria Profissional',
-    body: 'Para objetivo real: ganho de massa, energia e recuperação com as marcas certas.',
-  },
-  {
-    number: '02',
-    title: 'Atendimento Consultivo',
-    body: 'No WhatsApp para comprar com segurança e sem perda de tempo.',
-  },
-  {
-    number: '03',
-    title: 'Entrega Ágil',
-    body: 'Em Jaú e região para manter seu treino e rotina sem interrupções.',
-  },
+const historiaParagraphs = [
+  'Em 12 de agosto de 2017, nasceu a DJIRI com um propósito: tornar a saúde, a alimentação saudável e o bem-estar mais presentes na rotina das pessoas.',
+  'Desde o início, construímos nossa história ao lado dos nossos clientes. Cada objetivo, conquista e transformação nos inspira a oferecer produtos de qualidade para uma vida mais equilibrada.',
+  'Hoje, somos uma loja de suplementos e produtos naturais em Jaú, com opções para diferentes estilos de vida.',
+  'Nosso diferencial está na combinação de qualidade, variedade e atendimento próximo: mais do que oferecer produtos, queremos fazer parte da sua jornada de saúde e bem-estar.',
+  'DJIRI — saúde, confiança e cuidado desde 2017.',
 ]
 
 const faqItems = [
@@ -88,7 +73,7 @@ const faqItems = [
   },
   {
     q: 'Qual é o horário de funcionamento da loja?',
-    a: 'A loja funciona de segunda a sexta das 8h às 19h e aos sábados das 9h às 13h.',
+    a: 'Segunda a sexta das 8h às 20h, sábado das 8h às 14h e domingos e feriados das 8h às 12h.',
   },
   {
     q: 'Vocês indicam o suplemento ideal?',
@@ -104,7 +89,6 @@ const navLinks = [
   { href: '#inicio', label: 'Início' },
   { href: '#parceiros', label: 'Marcas' },
   { href: '#depoimentos', label: 'Depoimentos' },
-  { href: '#beneficios', label: 'Benefícios' },
   { href: '#faq', label: 'FAQ' },
   { href: '#contato', label: 'Contato' },
 ]
@@ -310,19 +294,6 @@ function App() {
         })
       })
 
-      // ── Counters
-      gsap.utils.toArray('.stat__count').forEach((el) => {
-        const target = parseInt(el.dataset.target, 10)
-        const obj = { val: 0 }
-        gsap.to(obj, {
-          val: target,
-          duration: 2.4,
-          ease: 'power3.out',
-          snap: { val: 1 },
-          onUpdate() { el.textContent = obj.val },
-          scrollTrigger: { trigger: el.closest('.stat'), start: 'top 88%' },
-        })
-      })
     }, rootRef)
 
     // ── Partners marquee
@@ -475,29 +446,26 @@ function App() {
           <div className="hero__body">
             <p className="hero__kicker">
               <span className="hero__kicker-rule" />
-              ELEVE SUAS HABILIDADES
+              VIVA O DESEJO DE EVOLUIR
               <span className="hero__kicker-rule" />
             </p>
 
-            <h1 className="hero__title">
+            <h1 className="hero__title hero__title--story">
               <span className="hero__title-clip">
-                <span className="hero__title-word">DESBLOQUEIE</span>
-              </span>
-              <span className="hero__title-clip">
-                <span className="hero__title-word">SEU</span>
+                <span className="hero__title-word">Mais que alimentação.</span>
               </span>
               <span className="hero__title-clip hero__title-clip--gold">
-                <span className="hero__title-word">POTENCIAL.</span>
+                <span className="hero__title-word">Um novo estilo de vida.</span>
               </span>
               <span className="sr-only"> — Djiri Suplementos, loja de suplementos em Jaú/SP</span>
             </h1>
 
             <div className="hero__foot">
               <p className="hero__subtitle">
-                Marcas top, atendimento consultivo<br />e entrega rápida em Jaú e região.
+                O que te move também nos inspira.
               </p>
               <div className="hero__actions">
-                <a href={whatsappHref} target="_blank" rel="noreferrer" className="hero__action btn-primary">
+                <a href={comprarHref} target="_blank" rel="noreferrer" className="hero__action btn-primary">
                   <IconWhatsApp /> Comprar suplementos
                 </a>
                 <a href="#contato" className="hero__action btn-ghost">
@@ -510,21 +478,6 @@ function App() {
           <div className="hero__scroll-hint" aria-hidden="true">
             <span>SCROLL</span>
             <div className="hero__scroll-line" />
-          </div>
-        </section>
-
-        {/* ── STATS ──────────────────────────────────────────── */}
-        <section className="stats-band js-reveal">
-          <div className="stats">
-            {stats.map(({ value, suffix, label }) => (
-              <div key={label} className="stat">
-                <div className="stat__num">
-                  <span className="stat__count" data-target={value}>0</span>
-                  <span className="stat__suffix">{suffix}</span>
-                </div>
-                <p className="stat__label">{label}</p>
-              </div>
-            ))}
           </div>
         </section>
 
@@ -581,26 +534,16 @@ function App() {
         </section>
 
         {/* ── BENEFITS ───────────────────────────────────────── */}
-        <section id="beneficios" className="s-block s-anchor benefits-section">
+        <section id="historia" className="s-block s-anchor benefits-section">
           <div className="s-inner">
             <div className="s-head js-reveal">
-              <p className="s-tag">POR QUE ESCOLHER</p>
-              <h2 className="s-title">Suplementação com direção</h2>
-              <p className="s-sub">
-                Menos ruído, mais constância. A Djiri organiza sua compra com foco no que realmente funciona.
-              </p>
-            </div>
-            <div className="benefits js-stagger">
-              {benefits.map((b) => (
-                <article key={b.number} className="benefit js-stagger-item">
-                  <div className="benefit__top">
-                    <span className="benefit__num">{b.number}</span>
-                    <div className="benefit__rule" />
-                  </div>
-                  <h3 className="benefit__title">{b.title}</h3>
-                  <p className="benefit__body">{b.body}</p>
-                </article>
-              ))}
+              <p className="s-tag">NOSSA HISTÓRIA</p>
+              <h2 className="s-title">Saúde, confiança e cuidado desde 2017</h2>
+              <div className="historia-text">
+                {historiaParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
             <div className="gallery js-reveal">
               {storeGallery.map((src, i) => (
