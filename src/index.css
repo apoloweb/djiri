@@ -1055,7 +1055,7 @@ button { font-family: inherit; }
 /* ── 1600px — MacBook Air / telas largas curtas ── */
 @media (max-width: 1600px) {
   .hero__title-word { font-size: clamp(2.5rem, 3.8vw, 4.2rem); }
-  .hero__body { justify-content: flex-start; padding-top: 10vh; }
+  .hero__body { justify-content: center; padding-top: 0; }
   .hero__bg { background-image: var(--img-macbook); background-attachment: scroll; background-size: cover; background-position: 65% center; }
   .hero__veil { background:
     linear-gradient(90deg, rgba(16, 38, 26, 0.88) 0%, rgba(16, 38, 26, 0.6) 38%, rgba(16, 38, 26, 0.2) 62%, rgba(16, 38, 26, 0) 100%),
@@ -1115,11 +1115,12 @@ button { font-family: inherit; }
 /* ── 900px — iPad Air / tablets landscape ── */
 @media (max-width: 900px) {
   .hero__body { padding-top: 0; justify-content: center; }
+  .hero__actions { flex-direction: column; align-items: flex-start; }
   .hero__title-word { font-size: clamp(2.8rem, 7.5vw, 5rem); }
   .hero__bg { background-image: var(--img-ipad); background-size: cover; background-position: 50% top; }
   .hero__veil { background:
-    linear-gradient(90deg, rgba(16, 38, 26, 0.82) 0%, rgba(16, 38, 26, 0.55) 38%, rgba(16, 38, 26, 0.15) 65%, rgba(16, 38, 26, 0) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(16, 38, 26, 0.75) 100%); }
+    linear-gradient(90deg, rgba(16, 38, 26, 0.95) 0%, rgba(16, 38, 26, 0.82) 30%, rgba(16, 38, 26, 0.45) 60%, rgba(16, 38, 26, 0.12) 100%),
+    linear-gradient(180deg, rgba(16, 38, 26, 0.35) 0%, rgba(16, 38, 26, 0) 32%, rgba(16, 38, 26, 0) 72%, rgba(16, 38, 26, 0.45) 100%); }
 
   .testis { grid-template-columns: repeat(2, 1fr); }
   .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
@@ -1164,8 +1165,8 @@ button { font-family: inherit; }
   .hero__body { padding-top: 0; justify-content: center; }
   .hero__bg { background-image: var(--img-mobile); background-size: cover; background-position: 50% top; background-attachment: scroll; }
   .hero__veil { background:
-    linear-gradient(90deg, rgba(16, 38, 26, 0.35) 0%, rgba(16, 38, 26, 0.2) 38%, rgba(16, 38, 26, 0.05) 70%, rgba(16, 38, 26, 0) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(16, 38, 26, 0.75) 100%); }
+    linear-gradient(90deg, rgba(16, 38, 26, 0.92) 0%, rgba(16, 38, 26, 0.72) 42%, rgba(16, 38, 26, 0.4) 72%, rgba(16, 38, 26, 0.15) 100%),
+    linear-gradient(180deg, rgba(16, 38, 26, 0.4) 0%, rgba(16, 38, 26, 0) 34%, rgba(16, 38, 26, 0) 70%, rgba(16, 38, 26, 0.5) 100%); }
   #contato { padding-top: 1.5rem !important; scroll-margin-top: var(--topbar); }
 
   .contact { display: flex; flex-direction: column; }
@@ -1205,11 +1206,11 @@ button { font-family: inherit; }
 
   .s-sub { margin-inline: auto; }
 
-  .hero__kicker { justify-content: center; }
-  .hero__body   { text-align: center; }
-  .hero__foot   { align-items: center; }
-  .hero__subtitle { margin-inline: auto; }
-  .hero__actions  { justify-content: center; }
+  .hero__kicker { justify-content: flex-start; }
+  .hero__body   { text-align: left; }
+  .hero__foot   { align-items: flex-start; }
+  .hero__subtitle { margin-inline: 0; }
+  .hero__actions  { justify-content: flex-start; }
 
   .benefit__top { justify-content: center; }
   .benefit__rule { display: none; }
@@ -1431,4 +1432,35 @@ button { font-family: inherit; }
   margin-bottom: 0;
   color: var(--gold, #c9a86a);
   font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════
+   REFINO DE RESPONSIVIDADE (mobile / tablet)
+══════════════════════════════════════════════════════ */
+
+/* História: parágrafos sempre alinhados à esquerda (leitura) */
+.historia-text { text-align: left; }
+
+@media (max-width: 680px) {
+  /* Mantém a história legível (esquerda), mesmo com o cabeçalho centralizado */
+  .historia-text,
+  .historia-text p { text-align: left; }
+
+  /* Áreas de toque confortáveis (mín. 44px) */
+  .store-card__addr a,
+  .store-card__cta,
+  .footer__link,
+  .footer__credit {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .store-card__addr a { gap: 0.1rem; }
+
+  /* Respiro entre os dois telefones no card de contato */
+  .store-card__addr span { line-height: 1.9; }
+}
+
+@media (max-width: 680px) {
+  .footer__social { width: 44px; height: 44px; }
 }
