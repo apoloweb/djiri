@@ -85,6 +85,7 @@ const faqItems = [
 
 const navLinks = [
   { href: '#inicio', label: 'Início' },
+  { page: 'produtos', label: 'Produtos' },
   { href: '#parceiros', label: 'Marcas' },
   { href: '#depoimentos', label: 'Depoimentos' },
   { href: '#faq', label: 'FAQ' },
@@ -199,6 +200,241 @@ function PolicyPage({ title, setPage, children }) {
   )
 }
 
+// ─────────────────────────────────────────────────────────
+//  CATÁLOGO DE PRODUTOS (por tipo)
+// ─────────────────────────────────────────────────────────
+const WA_STORE = '5514991163773'
+const produtoWhats = (name) =>
+  `https://wa.me/${WA_STORE}?text=${encodeURIComponent(`Olá! Tenho interesse em ${name}. Pode me ajudar com disponibilidade e preço?`)}`
+
+const productCatalog = [
+  {
+    cat: 'Whey & Proteínas',
+    items: [
+      { name: 'Whey Isolado', desc: 'Proteína do soro do leite com alto grau de pureza e baixíssimo teor de carboidratos, gordura e lactose. Absorção rápida.', uso: 'Em média 1 dose (±30 g) ao dia, geralmente após o treino.' },
+      { name: 'Whey Concentrado', desc: 'A forma mais clássica e com melhor custo-benefício do whey, rica em proteínas para apoiar o ganho e a manutenção muscular.', uso: '1 dose (±30 g) ao dia, conforme sua necessidade de proteína.' },
+      { name: 'Whey 3W', desc: 'Blend com três fontes de proteína (concentrada, isolada e hidrolisada) para liberação em diferentes velocidades.', uso: '1 dose (±30 g) ao dia, antes ou após o treino.' },
+      { name: 'Whey Beef (Proteína da Carne)', desc: 'Proteína isolada da carne bovina — opção para quem tem restrição à lactose e quer alto teor proteico.', uso: '1 dose ao dia conforme o rótulo.' },
+      { name: 'Proteína Vegana', desc: 'Proteína de origem vegetal (ervilha, arroz, amêndoa) para dietas veganas ou com restrição à lactose.', uso: '1 dose ao dia, ótima no café da manhã ou pós-treino.' },
+    ],
+  },
+  {
+    cat: 'Creatina',
+    items: [
+      { name: 'Creatina Monohidratada', desc: 'O suplemento de performance mais estudado do mundo. Auxilia força, potência e ganho de massa.', uso: 'Geralmente 3 a 5 g por dia, em qualquer horário, de forma contínua.' },
+      { name: 'Creatina Saborizada (Zero Açúcar)', desc: 'A mesma creatina, com sabor e sem açúcar — praticidade e gosto agradável.', uso: '3 a 5 g por dia, dissolvida na água.' },
+      { name: 'Creatina Micronizada', desc: 'Partículas menores para melhor dissolução e conforto digestivo.', uso: '3 a 5 g por dia, em qualquer horário.' },
+      { name: 'Creatina Creapure®', desc: 'Creatina alemã com selo Creapure®, referência mundial em pureza e qualidade.', uso: '3 a 5 g por dia, de forma contínua.' },
+      { name: 'Creatina Gummy', desc: 'Creatina em goma mastigável — prática para levar na bolsa e consumir sem água.', uso: 'Conforme a porção indicada no rótulo.' },
+    ],
+  },
+  {
+    cat: 'Cafés & Energéticos',
+    items: [
+      { name: 'Supercoffee', desc: 'Café funcional com cafeína e compostos termogênicos para energia e foco.', uso: '1 dose pela manhã ou antes do treino.' },
+      { name: 'Ultra Coffee', desc: 'Café com blend de ativos para disposição, foco e auxílio na queima de gordura.', uso: '1 dose ao dia, de preferência pela manhã.' },
+      { name: 'V-Coffee', desc: 'Café funcional com ativos para energia e bem-estar.', uso: '1 dose ao dia conforme o rótulo.' },
+      { name: 'Brainstorm', desc: 'Café focado em foco e cognição (nootrópico).', uso: '1 dose antes de atividades que exijam concentração.' },
+    ],
+  },
+  {
+    cat: 'Aminoácidos & Performance',
+    items: [
+      { name: "EAA's (Aminoácidos Essenciais)", desc: 'Conjunto completo de aminoácidos essenciais para síntese proteica e recuperação.', uso: 'Durante ou após o treino.' },
+      { name: 'Glutamina', desc: 'Aminoácido que auxilia recuperação e saúde intestinal e imunológica.', uso: 'Geralmente 5 g ao dia.' },
+      { name: 'Arginina', desc: 'Precursor de óxido nítrico, ligado a vasodilatação e desempenho.', uso: 'Conforme o rótulo, antes do treino.' },
+      { name: 'HMB', desc: 'Metabólito da leucina, associado à preservação de massa muscular.', uso: 'Conforme o rótulo.' },
+    ],
+  },
+  {
+    cat: 'Vitaminas, Minerais & Antioxidantes',
+    items: [
+      { name: 'Ômega 3', desc: 'Ácidos graxos EPA e DHA para saúde cardiovascular e cerebral.', uso: 'Conforme o rótulo, junto às refeições.' },
+      { name: 'Colágeno Skin', desc: 'Peptídeos de colágeno para pele, cabelos e unhas, muitas vezes com vitamina C.', uso: '1 dose ao dia.' },
+      { name: 'Colágeno Tipo 2', desc: 'Colágeno voltado à saúde de articulações e cartilagens.', uso: 'Conforme o rótulo.' },
+      { name: 'Magnésio', desc: 'Mineral essencial para músculos, energia e sono.', uso: 'Conforme o rótulo.' },
+      { name: 'Magnésio + Inositol', desc: 'Combinação voltada ao relaxamento, bem-estar e qualidade do sono.', uso: 'Geralmente à noite.' },
+      { name: 'Vitamina D3', desc: 'Essencial para ossos, imunidade e saúde hormonal.', uso: 'Conforme o rótulo.' },
+      { name: 'Complexo B', desc: 'Conjunto de vitaminas do complexo B para energia e metabolismo.', uso: 'Conforme o rótulo.' },
+      { name: 'Multivitamínico', desc: 'Combinação de vitaminas e minerais para o dia a dia.', uso: '1 dose ao dia.' },
+      { name: 'NAC', desc: 'N-acetilcisteína, precursor de glutationa, com ação antioxidante.', uso: 'Conforme o rótulo.' },
+      { name: 'Cúrcuma', desc: 'Antioxidante e anti-inflamatório natural (curcumina).', uso: 'Conforme o rótulo.' },
+      { name: 'Resveratrol', desc: 'Antioxidante associado à longevidade e saúde vascular.', uso: 'Conforme o rótulo.' },
+      { name: 'CoQ10', desc: 'Coenzima Q10, ligada à energia celular e saúde cardiovascular.', uso: 'Conforme o rótulo.' },
+      { name: 'Melatonina', desc: 'Auxilia a regulação do sono.', uso: 'Pouco antes de dormir, conforme o rótulo.' },
+      { name: 'Própolis', desc: 'Extrato com ação antioxidante e de suporte à imunidade.', uso: 'Conforme o rótulo.' },
+      { name: 'Probióticos', desc: 'Bactérias benéficas para a saúde intestinal.', uso: 'Conforme o rótulo.' },
+      { name: 'Prebióticos', desc: 'Fibras que alimentam a microbiota intestinal.', uso: 'Conforme o rótulo.' },
+    ],
+  },
+  {
+    cat: 'Saúde Hormonal & Libido',
+    items: [
+      { name: 'Feno Grego', desc: 'Planta associada a vitalidade e suporte hormonal.', uso: 'Conforme o rótulo.' },
+      { name: 'Tribulus', desc: 'Extrato ligado a disposição e saúde hormonal.', uso: 'Conforme o rótulo.' },
+      { name: 'Maca Peruana', desc: 'Raiz andina associada a energia, disposição e libido.', uso: 'Conforme o rótulo.' },
+      { name: 'Ginseng', desc: 'Adaptógeno ligado a energia, foco e bem-estar.', uso: 'Conforme o rótulo.' },
+    ],
+  },
+  {
+    cat: 'Endurance',
+    items: [
+      { name: 'Gel de Carboidrato', desc: 'Energia rápida para atividades de longa duração.', uso: 'Durante o exercício, conforme a necessidade.' },
+      { name: 'Nitrato de Beterraba', desc: 'Auxilia vasodilatação e desempenho aeróbico.', uso: 'Antes do treino/prova.' },
+      { name: 'Eletrólitos', desc: 'Reposição de sódio, potássio e magnésio perdidos no suor.', uso: 'Durante e após o exercício.' },
+      { name: 'Isotônicos', desc: 'Bebidas para hidratação e reposição durante o esforço.', uso: 'Durante a atividade.' },
+      { name: 'Cápsula de Sal', desc: 'Reposição prática de sódio em provas longas.', uso: 'Conforme o rótulo, durante o esforço.' },
+      { name: 'Garrafas Térmicas', desc: 'Garrafas e squeezes para manter sua hidratação na temperatura ideal.', uso: 'Acessório para treino e dia a dia.' },
+    ],
+  },
+  {
+    cat: 'Zero Lactose',
+    items: [
+      { name: 'Doces Zero Lactose', desc: 'Opções de doces sem lactose para quem tem restrição.', uso: '' },
+      { name: 'Chocolates Zero Lactose', desc: 'Chocolates sem lactose, incluindo versões fit.', uso: '' },
+      { name: 'Barras Proteicas', desc: 'Barras práticas e ricas em proteína, sem lactose.', uso: '' },
+      { name: 'Snacks Zero Lactose', desc: 'Salgadinhos e snacks saudáveis sem lactose.', uso: '' },
+      { name: 'Bebidas Zero Lactose', desc: 'Bebidas e shakes sem lactose.', uso: '' },
+      { name: 'Leites Vegetais (coco, castanha, amêndoa)', desc: 'Alternativas vegetais ao leite, sem lactose.', uso: '' },
+      { name: 'Iogurtes Zero Lactose', desc: 'Iogurtes sem lactose, incluindo versões proteicas.', uso: '' },
+    ],
+  },
+  {
+    cat: 'Sem Glúten',
+    items: [
+      { name: 'Doces Sem Glúten', desc: 'Doces próprios para dieta sem glúten.', uso: '' },
+      { name: 'Pães Integrais Sem Glúten', desc: 'Pães integrais livres de glúten.', uso: '' },
+      { name: 'Comidas Congeladas', desc: 'Refeições congeladas práticas e sem glúten.', uso: '' },
+      { name: 'Snacks Sem Glúten', desc: 'Snacks e salgadinhos sem glúten.', uso: '' },
+      { name: 'Macarrão (a granel)', desc: 'Macarrões especiais vendidos a granel.', uso: '' },
+      { name: 'Torradas (a granel)', desc: 'Torradas saudáveis a granel.', uso: '' },
+      { name: 'Brownies (a granel)', desc: 'Brownies fit vendidos a granel.', uso: '' },
+      { name: 'Molhos (a granel)', desc: 'Molhos especiais a granel.', uso: '' },
+    ],
+  },
+  {
+    cat: 'Empório & A Granel',
+    items: [
+      { name: 'Temperos', desc: 'Temperos e especiarias selecionados, vendidos a granel.', uso: '' },
+      { name: 'Castanhas', desc: 'Castanhas frescas a granel.', uso: '' },
+      { name: 'Amêndoas', desc: 'Amêndoas selecionadas a granel.', uso: '' },
+      { name: 'Chás', desc: 'Variedade de chás e ervas a granel.', uso: '' },
+      { name: 'Snacks', desc: 'Snacks saudáveis a granel.', uso: '' },
+      { name: 'Drageados Zero Açúcar', desc: 'Drageados e confeitos sem açúcar.', uso: '' },
+      { name: 'Chocolates', desc: 'Chocolates especiais a granel.', uso: '' },
+      { name: 'Farinhas', desc: 'Farinhas funcionais e integrais a granel.', uso: '' },
+      { name: 'Granola', desc: 'Granolas artesanais a granel.', uso: '' },
+      { name: 'Aveia', desc: 'Aveia em flocos e farelo a granel.', uso: '' },
+      { name: 'Frutas Liofilizadas', desc: 'Frutas liofilizadas crocantes e naturais.', uso: '' },
+      { name: 'Azeite de Avocado', desc: 'Azeite de abacate premium.', uso: '' },
+      { name: 'Azeite de Trufas Negras', desc: 'Azeite aromatizado com trufas negras.', uso: '' },
+      { name: 'Mel de Trufas Negras', desc: 'Mel especial com trufas negras.', uso: '' },
+      { name: 'Mel Natural', desc: 'Mel puro e natural.', uso: '' },
+      { name: 'Manteiga Ghee', desc: 'Manteiga clarificada, sem lactose.', uso: '' },
+      { name: 'Ghee de Trufas Negras', desc: 'Ghee aromatizado com trufas negras.', uso: '' },
+      { name: 'Óleo de Coco', desc: 'Óleo de coco extravirgem.', uso: '' },
+      { name: 'Vinagre de Maçã', desc: 'Vinagre de maçã natural.', uso: '' },
+      { name: 'Geleia de Pimenta', desc: 'Geleia artesanal de pimenta.', uso: '' },
+      { name: 'Geleia de Trufas Negras', desc: 'Geleia gourmet de trufas negras.', uso: '' },
+      { name: 'Geleia de Alho Negro Trufado', desc: 'Geleia gourmet de alho negro com trufas.', uso: '' },
+      { name: 'Sal Integral', desc: 'Sal integral natural.', uso: '' },
+      { name: 'Sal Rosa', desc: 'Sal rosa do Himalaia.', uso: '' },
+      { name: 'Palmitos', desc: 'Palmitos selecionados.', uso: '' },
+      { name: 'Azeitonas', desc: 'Azeitonas e conservas a granel.', uso: '' },
+    ],
+  },
+]
+
+function ProductModal({ product, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKey)
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey) }
+  }, [onClose])
+  if (!product) return null
+  return (
+    <div className="pm-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={product.name}>
+      <div className="pm" onClick={(e) => e.stopPropagation()}>
+        <button className="pm__close" onClick={onClose} aria-label="Fechar">×</button>
+        <div className="pm__media" aria-hidden="true">
+          <span className="pm__initial">{product.name.charAt(0)}</span>
+        </div>
+        <div className="pm__body">
+          <p className="pm__cat">{product.cat}</p>
+          <h3 className="pm__title">{product.name}</h3>
+          <p className="pm__desc">{product.desc}</p>
+          {product.uso && (
+            <div className="pm__uso">
+              <span className="pm__uso-label">Modo de uso sugerido</span>
+              <p>{product.uso}</p>
+            </div>
+          )}
+          <a className="pm__cta" href={produtoWhats(product.name)} target="_blank" rel="noreferrer">
+            <IconWhatsApp size={18} /> Perguntar no WhatsApp
+          </a>
+          <p className="pm__note">As informações são gerais. Para orientação individual, fale com nossa equipe.</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ProductsPage() {
+  const [selected, setSelected] = useState(null)
+  useEffect(() => { window.scrollTo(0, 0) }, [])
+  const goHome = () => { window.location.href = '/' }
+  return (
+    <div className="produtos">
+      <header className="nav nav--solid">
+        <div className="nav__inner">
+          <a href="/" className="nav__logo-link" aria-label="Voltar ao início" onClick={(e) => { e.preventDefault(); goHome() }}>
+            <img src={logo} alt="Djiri Suplementos" className="nav__logo" />
+          </a>
+          <button className="policy__back" onClick={goHome}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Voltar ao site
+          </button>
+        </div>
+      </header>
+
+      <section className="produtos__hero">
+        <p className="produtos__eyebrow">NOSSO CATÁLOGO</p>
+        <h1 className="produtos__title">Produtos</h1>
+        <p className="produtos__sub">Suplementos, empório e produtos a granel. Clique em um item para saber mais — ou fale com a gente no WhatsApp.</p>
+      </section>
+
+      <div className="produtos__body">
+        {productCatalog.map((group) => (
+          <section className="prodcat" key={group.cat}>
+            <h2 className="prodcat__title">{group.cat}</h2>
+            <div className="prodgrid">
+              {group.items.map((item) => (
+                <button
+                  key={item.name}
+                  className="prodcard"
+                  onClick={() => setSelected({ ...item, cat: group.cat })}
+                >
+                  <div className="prodcard__media" aria-hidden="true">
+                    <span className="prodcard__initial">{item.name.charAt(0)}</span>
+                  </div>
+                  <div className="prodcard__foot">
+                    <span className="prodcard__name">{item.name}</span>
+                    <span className="prodcard__more">Ver mais +</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <ProductModal product={selected} onClose={() => setSelected(null)} />
+      <SiteFooter setPage={() => {}} />
+    </div>
+  )
+}
+
 function App() {
   const rootRef = useRef(null)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -281,6 +517,10 @@ function App() {
     }
   }, [])
 
+  if (page === 'produtos') {
+    return <ProductsPage />
+  }
+
   if (page === 'privacy') {
     return (
       <PolicyPage title="Política de Privacidade" setPage={setPage}>
@@ -360,8 +600,12 @@ function App() {
           </a>
 
           <nav className="nav__links" aria-label="Menu principal">
-            {navLinks.map(({ href, label }) => (
-              <a key={href} href={href} onClick={(e) => { e.preventDefault(); scrollTo(href) }}>{label}</a>
+            {navLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.page ? '#produtos' : item.href}
+                onClick={(e) => { e.preventDefault(); item.page ? (setPage(item.page), window.scrollTo(0, 0)) : scrollTo(item.href) }}
+              >{item.label}</a>
             ))}
           </nav>
 
@@ -382,8 +626,12 @@ function App() {
 
       <div className={`m-nav${mobileOpen ? ' m-nav--open' : ''}`} aria-hidden={!mobileOpen}>
         <nav>
-          {navLinks.map(({ href, label }) => (
-            <a key={href} href={href} onClick={(e) => { e.preventDefault(); closeMobile(); scrollTo(href, 360) }}>{label}</a>
+          {navLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.page ? '#produtos' : item.href}
+              onClick={(e) => { e.preventDefault(); closeMobile(); item.page ? (setPage(item.page), window.scrollTo(0, 0)) : scrollTo(item.href, 360) }}
+            >{item.label}</a>
           ))}
         </nav>
         <a href={whatsappHref} target="_blank" rel="noreferrer" className="m-nav__cta" onClick={closeMobile}>
