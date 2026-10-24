@@ -566,6 +566,7 @@ function App() {
               <div className="contact__map js-reveal">
                 <iframe
                   title="Mapa Djiri Suplementos"
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   src="https://maps.google.com/maps?q=Av.+Antonio+Prado+Lyra+357+Jardim+Diamante+Jau+SP&z=17&output=embed"
                 />
