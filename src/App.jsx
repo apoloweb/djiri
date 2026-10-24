@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import anime from 'animejs/lib/anime.es.js'
 import logo from './assets/logo_new2.png'
 import lojaNova6 from './assets/loja_nova (6).jpg'
 import lojaNova1 from './assets/loja_nova (1).jpg'
@@ -11,8 +10,6 @@ import lojaNova4 from './assets/loja_nova (4).jpg'
 import lojaNova5 from './assets/loja_nova (5).jpg'
 
 const storeGallery = [lojaNova1, lojaNova6, lojaNova2, lojaNova3, lojaNova4, lojaNova5]
-
-gsap.registerPlugin(ScrollTrigger)
 
 const phoneNumber = '5514991163773'
 const whatsappHref = `https://wa.me/${phoneNumber}`
@@ -242,44 +239,13 @@ function App() {
   }, [])
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+    curtainDone.current = true
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) return
 
     const ctx = gsap.context(() => {
-      if (!reduceMotion) {
-        // ── Curtain + hero entrance (chained timeline)
-        gsap
-          .timeline()
-          .to('.curtain__progress', {
-            scaleX: 1,
-            duration: 0.6,
-            ease: 'power2.inOut',
-          }, 0)
-          .to('.curtain', {
-            yPercent: -100,
-            duration: 1.05,
-            ease: 'power3.inOut',
-          }, 0.55)
-          .add(() => {
-            curtainDone.current = true
-            if (pendingScroll.current) {
-              const href = pendingScroll.current
-              pendingScroll.current = null
-              requestAnimationFrame(() => doScroll(href))
-            }
-          })
-          .from('.nav', { y: -20, opacity: 0, duration: 0.5, ease: 'power3.out' }, '-=0.45')
-          .from('.hero__kicker', { y: 20, opacity: 0, duration: 0.5, ease: 'power3.out' }, '-=0.3')
-          .from('.hero__title-word', { y: '110%', duration: 0.8, stagger: 0.1, ease: 'power3.out' }, '-=0.35')
-          .from('.hero__subtitle', { y: 18, opacity: 0, duration: 0.5, ease: 'power3.out' }, '-=0.35')
-          .from('.hero__action', { y: 14, opacity: 0, stagger: 0.12, duration: 0.45, ease: 'power3.out' }, '-=0.3')
-          .from('.hero__scroll-hint', { opacity: 0, duration: 0.5, ease: 'power2.out' }, '-=0.15')
-
-      } else {
-        curtainDone.current = true
-        gsap.from('.nav', { y: -20, opacity: 0, duration: 0.55, ease: 'power3.out', delay: 0.1 })
-      }
-
-      // ── Scroll reveals
+      // ── Scroll reveals (seções abaixo do hero)
       gsap.utils.toArray('.js-reveal').forEach((el) => {
         gsap.from(el, {
           y: 36, opacity: 0, duration: 0.75, ease: 'power2.out',
@@ -293,12 +259,11 @@ function App() {
           scrollTrigger: { trigger: parent, start: 'top 83%' },
         })
       })
-
     }, rootRef)
 
-    // ── Partners marquee
+    // ── Partners marquee (anime.js carregado só no cliente)
     let marquee
-    if (!reduceMotion) {
+    import('animejs/lib/anime.es.js').then(({ default: anime }) => {
       marquee = anime({
         targets: '.partners__track',
         translateX: ['0%', '-50%'],
@@ -306,7 +271,7 @@ function App() {
         easing: 'linear',
         loop: true,
       })
-    }
+    })
 
     return () => {
       ctx.revert()
@@ -385,13 +350,6 @@ function App() {
     <>
     <div ref={rootRef} className="site">
       <div className="grain" aria-hidden="true" />
-
-      {/* ── CURTAIN ────────────────────────────────────────── */}
-      <div className="curtain" aria-hidden="true">
-        <img src={logo} alt="" className="curtain__logo" />
-        <p className="curtain__name">DJIRI SUPLEMENTOS</p>
-        <div className="curtain__progress" />
-      </div>
 
       {/* ── NAV ────────────────────────────────────────────── */}
       <header className="nav">

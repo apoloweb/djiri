@@ -31,3 +31,7 @@ uploads_urls.txt
 *.njsproj
 *.sln
 *.sw?
+
+# vite-react-ssg
+.vite-react-ssg-temp
+.preview.*
