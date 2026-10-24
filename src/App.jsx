@@ -18,10 +18,11 @@ const mapsHref = 'https://www.google.com/maps/search/?api=1&query=Av.+Antonio+Pr
 const googleReviewsHref =
   'https://www.google.com/search?q=djiri+suplementos#lrd=0x94b8a7ff4cf29b0d:0xdabc3ea7d9dbca92,1,,,'
 
-import heroDesktop from './assets/hero-desktop.jpg'
-import heroMacbook from './assets/hero_mackbook.jpg'
-import heroIpad from './assets/ipad-air.jpg'
-import heroMobile from './assets/hero-mobile.jpg'
+// Imagens do hero servidas de /public (URL estável p/ preload do LCP)
+const heroDesktop = '/hero-desktop.jpg'
+const heroMacbook = '/hero_mackbook.jpg'
+const heroIpad = '/ipad-air.jpg'
+const heroMobile = '/hero-mobile.jpg'
 import marca1 from './assets/marca_1.webp'
 import marca2 from './assets/marca_2.webp'
 import marca3 from './assets/marca_3.webp'
