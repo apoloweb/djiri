@@ -1655,3 +1655,15 @@ button { font-family: inherit; }
   .prodgrid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
   .prodcard__initial { font-size: 2.6rem; }
 }
+
+/* Imagens reais dos produtos (quando houver) */
+.prodcard__img, .pm__img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  padding: 0.6rem;
+}
+.pm__img { padding: 1rem; }
+
+/* Quando o card tem foto real, área da imagem fica branca (e-commerce) */
+.prodcard__media:has(.prodcard__img) { background: #fff; }
+.pm__media:has(.pm__img) { background: #fff; }

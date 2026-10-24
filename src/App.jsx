@@ -211,20 +211,20 @@ const productCatalog = [
   {
     cat: 'Whey & Proteínas',
     items: [
-      { name: 'Whey Isolado', desc: 'Proteína do soro do leite com alto grau de pureza e baixíssimo teor de carboidratos, gordura e lactose. Absorção rápida.', uso: 'Em média 1 dose (±30 g) ao dia, geralmente após o treino.' },
-      { name: 'Whey Concentrado', desc: 'A forma mais clássica e com melhor custo-benefício do whey, rica em proteínas para apoiar o ganho e a manutenção muscular.', uso: '1 dose (±30 g) ao dia, conforme sua necessidade de proteína.' },
-      { name: 'Whey 3W', desc: 'Blend com três fontes de proteína (concentrada, isolada e hidrolisada) para liberação em diferentes velocidades.', uso: '1 dose (±30 g) ao dia, antes ou após o treino.' },
-      { name: 'Whey Beef (Proteína da Carne)', desc: 'Proteína isolada da carne bovina — opção para quem tem restrição à lactose e quer alto teor proteico.', uso: '1 dose ao dia conforme o rótulo.' },
-      { name: 'Proteína Vegana', desc: 'Proteína de origem vegetal (ervilha, arroz, amêndoa) para dietas veganas ou com restrição à lactose.', uso: '1 dose ao dia, ótima no café da manhã ou pós-treino.' },
+      { name: 'Whey Isolado', img: '/produtos/whey-isolado.jpg', desc: 'Proteína do soro do leite com alto grau de pureza e baixíssimo teor de carboidratos, gordura e lactose. Absorção rápida.', uso: 'Em média 1 dose (±30 g) ao dia, geralmente após o treino.' },
+      { name: 'Whey Concentrado', img: '/produtos/whey-concentrado.webp', desc: 'A forma mais clássica e com melhor custo-benefício do whey, rica em proteínas para apoiar o ganho e a manutenção muscular.', uso: '1 dose (±30 g) ao dia, conforme sua necessidade de proteína.' },
+      { name: 'Whey 3W', img: '/produtos/whey-3w.webp', desc: 'Blend com três fontes de proteína (concentrada, isolada e hidrolisada) para liberação em diferentes velocidades.', uso: '1 dose (±30 g) ao dia, antes ou após o treino.' },
+      { name: 'Whey Beef (Proteína da Carne)', img: '/produtos/whey-beef.webp', desc: 'Proteína isolada da carne bovina — opção para quem tem restrição à lactose e quer alto teor proteico.', uso: '1 dose ao dia conforme o rótulo.' },
+      { name: 'Proteína Vegana', img: '/produtos/whey-vegano.webp', desc: 'Proteína de origem vegetal (ervilha, arroz, amêndoa) para dietas veganas ou com restrição à lactose.', uso: '1 dose ao dia, ótima no café da manhã ou pós-treino.' },
     ],
   },
   {
     cat: 'Creatina',
     items: [
-      { name: 'Creatina Monohidratada', desc: 'O suplemento de performance mais estudado do mundo. Auxilia força, potência e ganho de massa.', uso: 'Geralmente 3 a 5 g por dia, em qualquer horário, de forma contínua.' },
+      { name: 'Creatina Monohidratada', img: '/produtos/creatina-monohidratada.webp', desc: 'O suplemento de performance mais estudado do mundo. Auxilia força, potência e ganho de massa.', uso: 'Geralmente 3 a 5 g por dia, em qualquer horário, de forma contínua.' },
       { name: 'Creatina Saborizada (Zero Açúcar)', desc: 'A mesma creatina, com sabor e sem açúcar — praticidade e gosto agradável.', uso: '3 a 5 g por dia, dissolvida na água.' },
-      { name: 'Creatina Micronizada', desc: 'Partículas menores para melhor dissolução e conforto digestivo.', uso: '3 a 5 g por dia, em qualquer horário.' },
-      { name: 'Creatina Creapure®', desc: 'Creatina alemã com selo Creapure®, referência mundial em pureza e qualidade.', uso: '3 a 5 g por dia, de forma contínua.' },
+      { name: 'Creatina Micronizada', img: '/produtos/creatina-micronizada.webp', desc: 'Partículas menores para melhor dissolução e conforto digestivo.', uso: '3 a 5 g por dia, em qualquer horário.' },
+      { name: 'Creatina Creapure®', img: '/produtos/creatina-creapure.jpg', desc: 'Creatina alemã com selo Creapure®, referência mundial em pureza e qualidade.', uso: '3 a 5 g por dia, de forma contínua.' },
       { name: 'Creatina Gummy', desc: 'Creatina em goma mastigável — prática para levar na bolsa e consumir sem água.', uso: 'Conforme a porção indicada no rótulo.' },
     ],
   },
@@ -358,7 +358,9 @@ function ProductModal({ product, onClose }) {
       <div className="pm" onClick={(e) => e.stopPropagation()}>
         <button className="pm__close" onClick={onClose} aria-label="Fechar">×</button>
         <div className="pm__media" aria-hidden="true">
-          <span className="pm__initial">{product.name.charAt(0)}</span>
+          {product.img
+            ? <img src={product.img} alt="" className="pm__img" />
+            : <span className="pm__initial">{product.name.charAt(0)}</span>}
         </div>
         <div className="pm__body">
           <p className="pm__cat">{product.cat}</p>
@@ -416,7 +418,9 @@ function ProductsPage() {
                   onClick={() => setSelected({ ...item, cat: group.cat })}
                 >
                   <div className="prodcard__media" aria-hidden="true">
-                    <span className="prodcard__initial">{item.name.charAt(0)}</span>
+                    {item.img
+                      ? <img src={item.img} alt="" className="prodcard__img" loading="lazy" />
+                      : <span className="prodcard__initial">{item.name.charAt(0)}</span>}
                   </div>
                   <div className="prodcard__foot">
                     <span className="prodcard__name">{item.name}</span>
