@@ -556,7 +556,7 @@ function App() {
                   onKeyDown={(e) => e.key === 'Enter' && setLightbox(src)}
                   aria-label={`Abrir foto ${i + 1} da loja`}
                 >
-                  <img src={src} alt={`Djiri Suplementos — foto ${i + 1}`} />
+                  <img src={src} alt={`Djiri Suplementos — foto ${i + 1}`} width="1000" height="1333" loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -611,7 +611,7 @@ function App() {
                   src="https://maps.google.com/maps?q=Av.+Antonio+Prado+Lyra+357+Jardim+Diamante+Jau+SP&z=17&output=embed"
                 />
                 <div className="store-card">
-                  <img src={lojaNova4} alt="" className="store-card__img" aria-hidden="true" />
+                  <img src={lojaNova4} alt="" className="store-card__img" aria-hidden="true" loading="lazy" decoding="async" />
                   <div className="store-card__vignette" />
 
                   <div className="store-card__corners" aria-hidden="true">
