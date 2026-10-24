@@ -1117,7 +1117,8 @@ button { font-family: inherit; }
   .hero__body { padding-top: 0; justify-content: center; }
   .hero__actions { flex-direction: column; align-items: flex-start; }
   .hero__title-word { font-size: clamp(2.8rem, 7.5vw, 5rem); }
-  .hero__bg { background-image: var(--img-ipad); background-size: cover; background-position: 50% 12%; }
+  .hero { background: var(--bg-b, #0f241a); }
+  .hero__bg { background-image: var(--img-ipad); background-size: cover; background-position: 50% top; top: var(--topbar); }
   .hero__veil { background:
     linear-gradient(90deg, rgba(16, 38, 26, 0.95) 0%, rgba(16, 38, 26, 0.82) 30%, rgba(16, 38, 26, 0.45) 60%, rgba(16, 38, 26, 0.12) 100%),
     linear-gradient(180deg, rgba(16, 38, 26, 0.35) 0%, rgba(16, 38, 26, 0) 32%, rgba(16, 38, 26, 0) 72%, rgba(16, 38, 26, 0.45) 100%); }
