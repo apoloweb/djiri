@@ -158,7 +158,7 @@ function SiteFooter({ setPage }) {
         <div className="footer__bottom">
           <p className="footer__copy">© {new Date().getFullYear()} Djiri Suplementos — Todos os direitos reservados.</p>
           <a
-            href={`https://wa.me/5514997199773?text=${encodeURIComponent('Olá! Vi você no site da Djiri Suplementos e gostaria de saber mais sobre seus serviços.')}`}
+            href="https://apoloweb.net.br"
             target="_blank"
             rel="noreferrer"
             className="footer__credit"
