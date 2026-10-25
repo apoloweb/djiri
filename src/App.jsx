@@ -347,11 +347,12 @@ const productCatalog = [
 
 function ProductModal({ product, onClose }) {
   useEffect(() => {
+    if (!product) return
     const onKey = (e) => { if (e.key === 'Escape') onClose() }
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
     return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey) }
-  }, [onClose])
+  }, [product, onClose])
   if (!product) return null
   return (
     <div className="pm-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={product.name}>
