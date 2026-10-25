@@ -1436,8 +1436,8 @@ button { font-family: inherit; }
 }
 .historia-cols p:last-child { margin-bottom: 0; }
 .historia-tagline {
-  margin: clamp(2.3rem, 4vw, 3rem) 0 0;
-  padding-top: 1.7rem;
+  margin: clamp(3.2rem, 5vw, 4.5rem) 0 0;
+  padding-top: clamp(1.8rem, 2.5vw, 2.6rem);
   border-top: 1px solid var(--gold-bd, rgba(200,162,74,0.35));
   color: var(--gold, #c9a86a) !important;
   font-weight: 600;
