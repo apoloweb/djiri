@@ -1426,7 +1426,8 @@ button { font-family: inherit; }
 .historia-cols {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(2rem, 4vw, 4rem);
+  column-gap: clamp(3rem, 6vw, 6.5rem);
+  row-gap: clamp(2rem, 3.5vw, 3rem);
 }
 .historia-text p {
   margin: 0 0 1.2rem;
