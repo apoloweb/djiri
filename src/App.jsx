@@ -241,7 +241,7 @@ const productCatalog = [
     cat: 'Aminoácidos & Performance',
     items: [
       { name: "EAA's (Aminoácidos Essenciais)", desc: 'Conjunto completo de aminoácidos essenciais para síntese proteica e recuperação.', uso: 'Durante ou após o treino.' },
-      { name: 'Glutamina', desc: 'Aminoácido que auxilia recuperação e saúde intestinal e imunológica.', uso: 'Geralmente 5 g ao dia.' },
+      { name: 'Glutamina', img: '/produtos/glutamina.webp', desc: 'Aminoácido que auxilia recuperação e saúde intestinal e imunológica.', uso: 'Geralmente 5 g ao dia.' },
       { name: 'Arginina', desc: 'Precursor de óxido nítrico, ligado a vasodilatação e desempenho.', uso: 'Conforme o rótulo, antes do treino.' },
       { name: 'HMB', desc: 'Metabólito da leucina, associado à preservação de massa muscular.', uso: 'Conforme o rótulo.' },
     ],
@@ -249,11 +249,11 @@ const productCatalog = [
   {
     cat: 'Vitaminas, Minerais & Antioxidantes',
     items: [
-      { name: 'Ômega 3', desc: 'Ácidos graxos EPA e DHA para saúde cardiovascular e cerebral.', uso: 'Conforme o rótulo, junto às refeições.' },
-      { name: 'Colágeno Skin', desc: 'Peptídeos de colágeno para pele, cabelos e unhas, muitas vezes com vitamina C.', uso: '1 dose ao dia.' },
+      { name: 'Ômega 3', img: '/produtos/omega3.jpg', desc: 'Ácidos graxos EPA e DHA para saúde cardiovascular e cerebral.', uso: 'Conforme o rótulo, junto às refeições.' },
+      { name: 'Colágeno Skin', img: '/produtos/colageno-skin.webp', desc: 'Peptídeos de colágeno para pele, cabelos e unhas, muitas vezes com vitamina C.', uso: '1 dose ao dia.' },
       { name: 'Colágeno Tipo 2', desc: 'Colágeno voltado à saúde de articulações e cartilagens.', uso: 'Conforme o rótulo.' },
       { name: 'Magnésio', desc: 'Mineral essencial para músculos, energia e sono.', uso: 'Conforme o rótulo.' },
-      { name: 'Magnésio + Inositol', desc: 'Combinação voltada ao relaxamento, bem-estar e qualidade do sono.', uso: 'Geralmente à noite.' },
+      { name: 'Magnésio + Inositol', img: '/produtos/magnesio-inositol.jpg', desc: 'Combinação voltada ao relaxamento, bem-estar e qualidade do sono.', uso: 'Geralmente à noite.' },
       { name: 'Vitamina D3', desc: 'Essencial para ossos, imunidade e saúde hormonal.', uso: 'Conforme o rótulo.' },
       { name: 'Complexo B', desc: 'Conjunto de vitaminas do complexo B para energia e metabolismo.', uso: 'Conforme o rótulo.' },
       { name: 'Multivitamínico', desc: 'Combinação de vitaminas e minerais para o dia a dia.', uso: '1 dose ao dia.' },
