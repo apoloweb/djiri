@@ -747,14 +747,17 @@ function App() {
         {/* ── BENEFITS ───────────────────────────────────────── */}
         <section id="historia" className="s-block s-anchor benefits-section">
           <div className="s-inner">
-            <div className="s-head js-reveal">
+            <div className="s-head js-reveal" style={{ marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
               <p className="s-tag">NOSSA HISTÓRIA</p>
               <h2 className="s-title">Saúde, confiança e cuidado<br />desde 2017</h2>
-              <div className="historia-text">
-                {historiaParagraphs.map((p, i) => (
+            </div>
+            <div className="historia-text js-reveal">
+              <div className="historia-cols">
+                {historiaParagraphs.slice(0, -1).map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>
+              <p className="historia-tagline">{historiaParagraphs[historiaParagraphs.length - 1]}</p>
             </div>
             <div className="gallery js-reveal">
               {storeGallery.map((src, i) => (
