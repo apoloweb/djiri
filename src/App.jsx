@@ -749,7 +749,7 @@ function App() {
           <div className="s-inner">
             <div className="s-head js-reveal">
               <p className="s-tag">NOSSA HISTÓRIA</p>
-              <h2 className="s-title">Saúde, confiança e cuidado desde 2017</h2>
+              <h2 className="s-title">Saúde, confiança e cuidado<br />desde 2017</h2>
               <div className="historia-text">
                 {historiaParagraphs.map((p, i) => (
                   <p key={i}>{p}</p>
