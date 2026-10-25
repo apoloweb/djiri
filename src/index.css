@@ -698,10 +698,11 @@ button { font-family: inherit; }
 .benefit__body { font-size: 0.97rem; color: var(--text-soft); line-height: 1.68; }
 
 .gallery {
-  margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+  max-width: 780px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 .gallery__item {
   display: block;
@@ -720,8 +721,7 @@ button { font-family: inherit; }
 }
 .gallery__item:hover img { transform: scale(1.05); }
 
-@media (max-width: 680px) { .gallery { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; } }
-@media (max-width: 420px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px) { .gallery { gap: 0.6rem; } }
 
 /* ══════════════════════════════════════════════════════
    FAQ
